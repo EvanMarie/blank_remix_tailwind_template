@@ -2,6 +2,24 @@
 
 import { a } from "react-spring";
 
+const generateVhUnits = () => {
+  const units = {};
+  for (let i = 1; i <= 1000; i++) {
+    const value = `${i / 10}vh`;
+    units[value] = value;
+  }
+  return units;
+};
+
+const generateFontSizeVh = () => {
+  const fontSizes = {};
+  for (let i = 1; i <= 1000; i++) {
+    const value = `${i / 10}vh`;
+    fontSizes[value] = [value, { lineHeight: value }];
+  }
+  return fontSizes;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const plugin = require("tailwindcss/plugin");
 
@@ -640,6 +658,10 @@ export default {
         mega: ["4.2vh", { lineHeight: "5vh" }],
         tooBig: ["4.4vh", { lineHeight: "5.2vh" }],
         insane: ["5vh", { lineHeight: "5.8vh" }],
+        ...generateFontSizeVh(),
+      },
+      spacing: {
+        ...generateVhUnits(),
       },
       screens: {
         mobile: "360px",
