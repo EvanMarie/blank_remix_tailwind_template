@@ -16,6 +16,7 @@ export default function IconButton({
   type = "normal",
   tooltipPlacement = "bottom",
   label,
+  tabIndex = 0,
 }: {
   containerClassName?: string;
   iconClassName?: string;
@@ -28,6 +29,7 @@ export default function IconButton({
   isDisabled?: boolean;
   htmlType?: "button" | "submit" | "reset";
   to?: string;
+  tabIndex?: number;
 
   type?:
     | "normal"
@@ -65,19 +67,19 @@ export default function IconButton({
     type === "normal"
       ? "text-[2.5vh]"
       : type === "smallNormal"
-      ? "text-[1.6vh]"
+      ? "text-[2.1vh]"
       : type === "largeNormal"
       ? "text-[4vh]"
       : type === "negative"
       ? "text-[2.5vh] "
       : type === "smallNegative"
-      ? "text-[1.6vh]"
+      ? "text-[2.1vh]"
       : type === "largeNegative"
       ? "text-[5vh]"
       : type === "unstyled"
       ? "text-[2.5vh]"
       : type === "smallUnstyled"
-      ? "text-[1.6vh]"
+      ? "text-[2.1vh]"
       : type === "largeUnstyled"
       ? "text-[3.5vh]"
       : "text-[1.6vh]";
@@ -104,24 +106,27 @@ export default function IconButton({
       : "text-[2vh] w-[3vh] h-[3vh]";
 
   return (
-    <Tooltip label={label} placement={tooltipPlacement}>
+    <Tooltip label={label} placement={tooltipPlacement} tabIndex={tabIndex}>
       <button
         onClick={onClick}
         disabled={isDisabled}
         type={htmlType}
         ref={ref}
         className={`${containerClassName}`}
+        tabIndex={tabIndex}
       >
         <Flex
           className={` ${iconButtonSize} ${buttonClass} ${containerClassName} hover:cursor-pointer `}
+          tabIndex={tabIndex}
         >
           {isLoading ? (
             <SpinnerSmall />
           ) : (
             <Icon
+              tabIndex={tabIndex}
               icon={icon}
               hoverCursor="hover:cursor-pointer"
-              iconClassName={`${displayIconSize} ${iconClassName}`}
+              iconClassName={`${displayIconSize} ${iconClassName} focus:outline-none`}
               containerClassName={`flex w-full h-full justify-center items-center`}
             />
           )}

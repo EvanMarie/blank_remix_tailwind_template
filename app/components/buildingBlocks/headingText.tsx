@@ -8,6 +8,7 @@ interface TextProps {
   className?: string;
   isCursive?: boolean;
   color?: string;
+  tabIndex?: number;
 }
 
 export default function Heading({
@@ -17,7 +18,8 @@ export default function Heading({
   shadow = "subtleTextShadow",
   className = "text-stroke-5-900",
   isCursive = true,
-  color = "text-col-900",
+  color = "text-col-300",
+  tabIndex = 0,
 }: TextProps) {
   const style: React.CSSProperties = {};
 
@@ -33,7 +35,11 @@ export default function Heading({
     : `${layout} ${color} ${shadow} ${className}`;
 
   return (
-    <div className={`${layout} ${shadow} ${textClassName}`} style={style}>
+    <div
+      className={`${layout} ${shadow} ${textClassName}`}
+      tabIndex={tabIndex}
+      style={style}
+    >
       {text}
     </div>
   );

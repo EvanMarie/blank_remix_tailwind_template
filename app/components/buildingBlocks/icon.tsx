@@ -1,7 +1,7 @@
 import React from "react";
 
 interface IconProps {
-  icon: React.ComponentType<{ className?: string }>;
+  icon: React.ComponentType<{ className?: string; tabIndex?: number }>;
   containerClassName?: string;
   pos?: "absolute" | "relative" | "fixed" | "sticky" | "static" | "inherit";
   t?: string;
@@ -14,10 +14,12 @@ interface IconProps {
   h?: string;
   rounded?: string;
   onClick?: () => void;
+  tabIndex?: number;
 }
 
 export default function Icon({
   icon: IconComponent,
+  tabIndex = 0,
   containerClassName = "",
   iconClassName = "",
   hoverCursor = "hover:cursor-default",
@@ -40,12 +42,15 @@ export default function Icon({
   return (
     <div
       role="button"
-      tabIndex={0}
+      tabIndex={tabIndex}
       className={`${rounded} ${w} ${h} ${pos} ${t} ${b} ${r} ${l} ${containerClassName} ${hoverCursor}`}
       onClick={onClick}
       onKeyDown={handleKeyDown}
     >
-      <IconComponent className={`${rounded} ${iconClassName} ${hoverCursor}`} />
+      <IconComponent
+        className={`${rounded} ${iconClassName} ${hoverCursor}`}
+        tabIndex={tabIndex}
+      />
     </div>
   );
 }

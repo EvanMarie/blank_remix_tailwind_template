@@ -11,6 +11,7 @@ interface HStackProps {
   onMouseLeave?: () => void;
   onFocus?: () => void;
   onBlur?: () => void;
+  tabIndex?: number;
 }
 
 // Use React.forwardRef to forward the ref to the div element
@@ -27,13 +28,14 @@ const HStack = React.forwardRef<HTMLDivElement, HStackProps>(
       onMouseLeave,
       onFocus,
       onBlur,
+      tabIndex = 0,
     },
     ref
   ) => {
     return (
       <div
         role="button"
-        tabIndex={0}
+        tabIndex={tabIndex}
         className={`flex flex-row ${gap} ${className} hover:cursor-default`}
         onClick={onClick}
         onKeyDown={onKeyDown}

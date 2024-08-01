@@ -6,17 +6,19 @@ interface FlexProps {
   style?: CSSProperties;
   onClick?: (event: MouseEvent<HTMLDivElement, MouseEvent>) => void;
   id?: string;
+  tabIndex?: number;
 }
 
 const Flex = React.forwardRef<HTMLDivElement, FlexProps>(
-  ({ children, style, onClick, className = "", id }, ref) => {
+  ({ children, style, onClick, className = "", id, tabIndex = 0 }, ref) => {
     return (
       <div
         ref={ref}
         id={id}
         className={`flex ${className}`}
         style={style}
-        onClick={onClick}
+        onClick={onClick as any}
+        tabIndex={tabIndex}
       >
         {children}
       </div>

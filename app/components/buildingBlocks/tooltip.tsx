@@ -24,17 +24,19 @@ interface TooltipProps {
   displacementPercentage?: string; // Custom calculation may be needed
   className?: string;
   border?: string;
+  tabIndex?: number;
 }
 
 export default function Tooltip({
   label,
-  bg = "bg-col-400",
-  color = "text-col-900 lightTextShadow",
+  bg = "bg-col-900",
+  color = "text-col-offwhite textShadow",
   w = "w-auto",
   children,
-  placement = "bottomRight",
+  placement = "bottom",
   border = "border-970-md",
   className = "",
+  tabIndex = 0,
 }: TooltipProps) {
   const [isHovered, setHovered] = useState(false);
 
@@ -75,11 +77,15 @@ export default function Tooltip({
   }
 
   return (
-    <div className={`relative ${className}`}>
+    <div
+      className={`relative ${className} hover:cursor-pointer`}
+      tabIndex={tabIndex}
+    >
       <div
         className={`relative inline-block ${className}`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
+        tabIndex={tabIndex}
         onClick={() => setHovered(false)}
         onKeyDown={(e) => {
           // Add a keydown event handler
@@ -87,7 +93,6 @@ export default function Tooltip({
             setHovered(false);
           }
         }}
-        tabIndex={0} // Make the div focusable
         role="button" // Indicate that the div is a button
       >
         {/* Child Element */}
@@ -100,7 +105,8 @@ export default function Tooltip({
           >
             <Transition className="rounded-sm">
               <div
-                className={`text-sm-tight justify-center py-[0.3vh] px-[0.8vh] z-30 font-semibold shadowNarrowNormal whitespace-nowrap rounded-sm ${border} ${w} ${bg} ${color}`}
+                className={`text-sm-tight justify-center py-[0.3vh] px-[0.8vh] shadowNarrowNormal whitespace-nowrap rounded-sm ${border} ${w} ${bg} ${color}`}
+                style={{ zIndex: 100 }}
               >
                 {label}
               </div>
