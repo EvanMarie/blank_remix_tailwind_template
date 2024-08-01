@@ -20,8 +20,8 @@ const getRandomValue = (min: number, max: number) =>
 
 export default function FallingImages({
   numImages = 53,
-  maxImageSize = 5,
-  minImageSize = 2,
+  maxImageSize = 4,
+  minImageSize = 1,
   maxImageRotation = 75,
   minImageRotation = -75,
   maxDuration = 7,
@@ -63,8 +63,8 @@ export default function FallingImages({
       },
     };
 
-    const imageSize = `${size}%`;
-
+    const width = `${size}vh`;
+    const height = `${size}vh`;
     return (
       <motion.img
         key={i}
@@ -74,8 +74,8 @@ export default function FallingImages({
         animate="visible"
         custom={i}
         style={{
-          width: imageSize,
-          height: imageSize,
+          width: width,
+          height: height,
           position: "absolute",
           zIndex: 100,
         }}
