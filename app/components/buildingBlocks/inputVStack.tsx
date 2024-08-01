@@ -4,6 +4,7 @@ import Heading from "./headingText";
 import VStack from "./vStack";
 import ValidatedInput from "./validatedInput";
 import { TextShadows } from "types";
+import VStackFull from "./vStackFull";
 
 interface InputVStackProps {
   labelSize?: "normal" | "small";
@@ -29,9 +30,9 @@ interface InputVStackProps {
 }
 
 export default function InputVStack({
-  labelColor,
+  labelColor = "text-col-300",
   labelSize = "normal",
-  labelIsCursive = true,
+  labelIsCursive = false,
   labelClassName,
   autoFocus = false,
   validationMin,
@@ -50,30 +51,33 @@ export default function InputVStack({
   onChange,
 }: InputVStackProps) {
   return (
-    <VStack
-      className={` leading-1rem w-full ${className}`}
-      align="start"
+    <VStackFull
+      className={`${className}`}
+      align="items-start"
       style={style}
       gap="gap-[0.5vh]"
+      tabIndex={-1}
     >
       {labelSize === "small" ? (
         <Heading
           isCursive={labelIsCursive}
           color={labelColor}
           className={`${labelClassName}`}
-          layout="text-md-tighter"
-          shadow={labelShadow as TextShadows}
+          layout="text-md"
           text={label}
+          tabIndex={-1}
+          shadow={labelShadow as TextShadows}
         />
       ) : (
         <>
           <Heading
             isCursive={labelIsCursive}
             color={labelColor}
-            className={` ${labelClassName}`}
-            shadow={labelShadow as TextShadows}
-            layout="text-md-tighter md:text-lg-tighter"
+            className={`${labelClassName}`}
+            layout="text-md md:text-lg"
             text={label}
+            tabIndex={-1}
+            shadow={labelShadow as TextShadows}
           />
         </>
       )}
@@ -88,6 +92,7 @@ export default function InputVStack({
           placeholder={placeholder}
           defaultValue={defaultValue}
           onChange={onChange}
+          className="w-full"
         />
       ) : (
         <Input
@@ -99,8 +104,9 @@ export default function InputVStack({
           defaultValue={defaultValue}
           type={type}
           onChange={onChange}
+          className="w-full"
         />
       )}
-    </VStack>
+    </VStackFull>
   );
 }

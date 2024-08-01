@@ -15,6 +15,7 @@ interface ValidatedInputProps {
   onValidityChange?: (isValid: boolean) => void;
   placeholder?: string;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  className?: string;
 }
 
 export default function ValidatedInput({
@@ -26,6 +27,7 @@ export default function ValidatedInput({
   name = "",
   id = "",
   placeholder = "",
+  className = "",
 }: ValidatedInputProps) {
   const [inputValue, setInputValue] = useState(defaultValue);
 
@@ -49,6 +51,7 @@ export default function ValidatedInput({
         onChange={handleInputChange}
         placeholder={placeholder}
         required={isRequired}
+        className={className}
       />
       <div
         className={`flex space-x-1 w-full pl-[0.5vh] text-xs-tight lightTextShadow font-semibold`}
