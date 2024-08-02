@@ -20,6 +20,24 @@ const generateFontSizeVh = () => {
   return fontSizes;
 };
 
+const generateVwUnits = () => {
+  const units = {};
+  for (let i = 1; i <= 1000; i++) {
+    const value = `${i / 10}vw`;
+    units[value] = value;
+  }
+  return units;
+};
+
+const generateFontSizeVw = () => {
+  const fontSizes = {};
+  for (let i = 1; i <= 1000; i++) {
+    const value = `${i / 10}vw`;
+    fontSizes[value] = [value, { lineHeight: value }];
+  }
+  return fontSizes;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const plugin = require("tailwindcss/plugin");
 
@@ -659,6 +677,7 @@ export default {
         tooBig: ["4.4vh", { lineHeight: "5.2vh" }],
         insane: ["5vh", { lineHeight: "5.8vh" }],
         ...generateFontSizeVh(),
+        ...generateFontSizeVw(),
       },
       spacing: {
         ...generateVhUnits(),
@@ -1793,7 +1812,6 @@ export default {
         },
       });
     }),
-
     typographyPlugin,
     customBackgroundsPlugin,
     buttonStyles,
