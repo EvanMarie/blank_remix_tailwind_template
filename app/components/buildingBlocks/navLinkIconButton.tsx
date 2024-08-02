@@ -1,9 +1,9 @@
-import { MouseEventHandler } from "react";
 import { SpinnerSmall } from "./spinner";
 import Icon from "./icon";
 import { NavLink } from "@remix-run/react";
 import Flex from "./flex";
 import Tooltip, { TooltipPlacement } from "./tooltip";
+import { motion } from "framer-motion";
 
 export default function NavIconButton({
   icon,
@@ -16,18 +16,20 @@ export default function NavIconButton({
   tooltipPlacement = "bottom",
   label,
   to,
+  target,
 }: {
   containerClassName?: string;
   iconClassName?: string;
   icon: React.ComponentType<{ className?: string }>;
   ref?: React.RefObject<HTMLDivElement>;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: () => void;
   isLoading?: boolean;
   label?: string;
   tooltipPlacement?: TooltipPlacement;
   isDisabled?: boolean;
   htmlType?: "button" | "submit" | "reset";
-  to?: string;
+  to: string;
+  target?: string;
 
   type?:
     | "normal"
@@ -73,7 +75,7 @@ export default function NavIconButton({
       : type === "smallNegative"
       ? "text-[1.6vh]"
       : type === "largeNegative"
-      ? "text-[5vh]"
+      ? "text-[4vh]"
       : type === "unstyled"
       ? "text-[2.5vh]"
       : type === "smallUnstyled"
@@ -103,12 +105,16 @@ export default function NavIconButton({
       ? " w-[6vh] h-[6vh]"
       : "text-[2vh] w-[3vh] h-[3vh]";
 
-  function ButtonInsides() {
-    return (
-      <Tooltip label={label} placement={tooltipPlacement}>
-        <Flex className={containerClassName} ref={ref}>
+  return (
+    <Tooltip label={label} placement={tooltipPlacement}>
+      <NavLink to={to} target={target ? target : undefined}>
+        <motion.div
+          className={`flex ${containerClassName}`}
+          ref={ref}
+          whileTap={{ rotate: 30, scale: 0.8, transition: { duration: 0.3 } }}
+        >
           <Flex
-            onClick={() => onClick}
+            onClick={onClick}
             className={`
    ${iconButtonSize}
             ${buttonClass}
@@ -124,20 +130,8 @@ export default function NavIconButton({
               />
             )}
           </Flex>
-        </Flex>
-      </Tooltip>
-    );
-  }
-
-  return (
-    <>
-      {to ? (
-        <NavLink to={to}>
-          <ButtonInsides />
-        </NavLink>
-      ) : (
-        <ButtonInsides />
-      )}
-    </>
+        </motion.div>
+      </NavLink>
+    </Tooltip>
   );
 }

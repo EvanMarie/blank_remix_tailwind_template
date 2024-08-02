@@ -3,6 +3,7 @@ import { SpinnerSmall } from "./spinner";
 import Icon from "./icon";
 import Flex from "./flex";
 import Tooltip, { TooltipPlacement } from "./tooltip";
+import { motion } from "framer-motion";
 
 export default function IconButton({
   icon,
@@ -16,7 +17,7 @@ export default function IconButton({
   type = "normal",
   tooltipPlacement = "bottom",
   label,
-  tabIndex = 0,
+  style,
 }: {
   containerClassName?: string;
   iconClassName?: string;
@@ -29,7 +30,7 @@ export default function IconButton({
   isDisabled?: boolean;
   htmlType?: "button" | "submit" | "reset";
   to?: string;
-  tabIndex?: number;
+  style?: React.CSSProperties;
 
   type?:
     | "normal"
@@ -67,19 +68,19 @@ export default function IconButton({
     type === "normal"
       ? "text-[2.5vh]"
       : type === "smallNormal"
-      ? "text-[2.1vh]"
+      ? "text-[1.6vh]"
       : type === "largeNormal"
       ? "text-[4vh]"
       : type === "negative"
       ? "text-[2.5vh] "
       : type === "smallNegative"
-      ? "text-[2.1vh]"
+      ? "text-[1.6vh]"
       : type === "largeNegative"
       ? "text-[5vh]"
       : type === "unstyled"
       ? "text-[2.5vh]"
       : type === "smallUnstyled"
-      ? "text-[2.1vh]"
+      ? "text-[1.6vh]"
       : type === "largeUnstyled"
       ? "text-[3.5vh]"
       : "text-[1.6vh]";
@@ -106,32 +107,27 @@ export default function IconButton({
       : "text-[2vh] w-[3vh] h-[3vh]";
 
   return (
-    <Tooltip label={label} placement={tooltipPlacement} tabIndex={tabIndex}>
-      <button
+    <Tooltip label={label} placement={tooltipPlacement}>
+      <motion.button
         onClick={onClick}
         disabled={isDisabled}
         type={htmlType}
         ref={ref}
         className={`${containerClassName}`}
-        tabIndex={tabIndex}
+        whileTap={{ rotate: 5, scale: 0.8, transition: { duration: 0.3 } }}
       >
-        <Flex
-          className={` ${iconButtonSize} ${buttonClass} ${containerClassName} hover:cursor-pointer `}
-          tabIndex={tabIndex}
-        >
+        <Flex className={` ${iconButtonSize} ${buttonClass} `} style={style}>
           {isLoading ? (
             <SpinnerSmall />
           ) : (
             <Icon
-              tabIndex={tabIndex}
               icon={icon}
-              hoverCursor="hover:cursor-pointer"
-              iconClassName={`${displayIconSize} ${iconClassName} focus:outline-none`}
-              containerClassName={`flex w-full h-full justify-center items-center`}
+              iconClassName={`${displayIconSize} ${iconClassName}`}
+              containerClassName={`flex w-full h-full justify-center items-center hover:cursor-pointer`}
             />
           )}
         </Flex>
-      </button>
+      </motion.button>
     </Tooltip>
   );
 }
