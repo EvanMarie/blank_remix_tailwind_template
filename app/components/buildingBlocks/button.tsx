@@ -3,6 +3,7 @@ import HStack from "./hStack";
 import FlexFull from "./flexFull";
 import BouncingDots from "../specialty/bouncingDots";
 import Icon from "./icon";
+import { motion } from "framer-motion";
 import Text from "./text";
 
 export type ButtonType =
@@ -109,16 +110,19 @@ export default function Button({
       : "text-[1.5vh]";
 
   // Combine all classes and include conditional classes for disabled state
-  const combinedClasses = `${buttonClass} ${width} ${buttonHeight} ${className} ${padding} font-semibold relative transition-400 ${
+  const combinedClasses = `hover:cursor-pointer ${buttonClass} ${width} ${buttonHeight} ${className} ${padding} font-500 relative transition-400 ${
     isDisabled ? "opacity-40 cursor-not-allowed" : ""
   }`;
 
   return (
-    <button
+    <motion.button
+      className="hover:cursor-pointer"
       onClick={!isDisabled ? onClick : undefined}
       disabled={isDisabled}
       type={htmlType}
       ref={ref}
+      whileHover={{ scale: 1.01, rotate: -1 }}
+      whileTap={{ scale: 0.97, rotate: 1 }}
     >
       <HStack
         className={combinedClasses}
@@ -142,7 +146,9 @@ export default function Button({
             iconClassName={`${displayIconSize} ${iconStyle}`}
           />
         )}
-        <Text className={`${textStroke} ${fontSize}`}>{buttonText}</Text>
+        <Text className={`${textStroke} ${fontSize} text-nowrap`}>
+          {buttonText}
+        </Text>
         {iconRight && (
           <Icon
             icon={iconRight}
@@ -150,6 +156,6 @@ export default function Button({
           />
         )}
       </HStack>
-    </button>
+    </motion.button>
   );
 }

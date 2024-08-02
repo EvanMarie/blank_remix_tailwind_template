@@ -3,9 +3,9 @@ import HStack from "./hStack";
 import FlexFull from "./flexFull";
 import BouncingDots from "../specialty/bouncingDots";
 import Icon from "./icon";
-import { NavLink } from "@remix-run/react";
+import { motion } from "framer-motion";
 import Text from "./text";
-import Flex from "./flex";
+import { NavLink } from "@remix-run/react";
 
 export type ButtonType =
   | "normal"
@@ -18,14 +18,17 @@ export type ButtonType =
   | "smallUnstyled"
   | "largeUnstyled";
 
-export default function NavLinkButton({
+export default function NavButton({
   className,
   buttonText = "",
   padding = "px-[1vh] py-[0px]",
   onClick,
+  to,
+  target,
   iconLeft,
   iconRight,
   ref,
+  htmlType = "button",
   iconStyle,
   isLoading,
   isDisabled,
@@ -33,13 +36,13 @@ export default function NavLinkButton({
   width = "w-fit",
   height,
   textStroke = "text-stroke-0-900 hover:text-stroke-5-900",
-  target,
-  to,
 }: {
   className?: string;
   buttonText?: string;
   padding?: string;
-  ref?: React.RefObject<HTMLDivElement>;
+  to: string;
+  target?: string;
+  ref?: React.MutableRefObject<HTMLButtonElement | null>;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   iconLeft?: React.ComponentType<{ className?: string }>;
   iconRight?: React.ComponentType<{ className?: string }>;
@@ -47,10 +50,8 @@ export default function NavLinkButton({
   isLoading?: boolean;
   isDisabled?: boolean;
   htmlType?: "button" | "submit" | "reset";
-  to: string;
   width?: string;
   height?: string;
-  target?: string;
   textStroke?: string;
   type?:
     | "normal"
@@ -114,13 +115,21 @@ export default function NavLinkButton({
       : "text-[1.5vh]";
 
   // Combine all classes and include conditional classes for disabled state
-  const combinedClasses = `${buttonClass} ${width} ${buttonHeight} ${className} ${padding} font-semibold relative transition-400 ${
+  const combinedClasses = `hover:cursor-pointer ${buttonClass} ${width} ${buttonHeight} ${className} ${padding} font-500 relative transition-400 ${
     isDisabled ? "opacity-40 cursor-not-allowed" : ""
   }`;
 
   return (
     <NavLink to={to} target={target}>
-      <Flex onClick={!isDisabled ? () => onClick : undefined} ref={ref}>
+      <motion.button
+        className="hover:cursor-pointer"
+        onClick={!isDisabled ? onClick : undefined}
+        disabled={isDisabled}
+        type={htmlType}
+        ref={ref}
+        whileHover={{ scale: 1.01, rotate: -1 }}
+        whileTap={{ scale: 0.97, rotate: 1 }}
+      >
         <HStack
           className={combinedClasses}
           style={{
@@ -141,7 +150,6 @@ export default function NavLinkButton({
                 />
               </FlexFull>
             )}
-
           {iconLeft && (
             <Icon
               icon={iconLeft}
@@ -156,7 +164,7 @@ export default function NavLinkButton({
             />
           )}
         </HStack>
-      </Flex>
+      </motion.button>
     </NavLink>
   );
 }
