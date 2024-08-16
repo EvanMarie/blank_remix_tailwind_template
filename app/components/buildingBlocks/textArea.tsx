@@ -15,7 +15,7 @@ interface TextAreaProps
 export default function TextArea({
   className = "",
   resize = "resize-none",
-  style,
+  style = { fontSize: "16px" },
   defaultValue,
   textAreaHeight = "h-[9.5vh]",
   textAreaWidth = "w-full",

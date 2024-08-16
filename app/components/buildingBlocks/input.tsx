@@ -11,7 +11,13 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   (
-    { className = "", style, defaultValue, autoFocus = false, ...props },
+    {
+      className = "",
+      style = { fontSize: "16px" },
+      defaultValue,
+      autoFocus = false,
+      ...props
+    },
     ref
   ) => {
     return (
