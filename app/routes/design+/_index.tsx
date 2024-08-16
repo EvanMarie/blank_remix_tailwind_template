@@ -429,14 +429,14 @@ export default function Design() {
               {" "}
               <StyledExampleWrap bg="bg-col-100">
                 {shadowsLightBack.map((shadow) => (
-                  <Box className={shadow} key={shadow}>
+                  <Box className={`${shadow} bg-col-500`} key={shadow}>
                     <Text className="p-[1vh]">{shadow}</Text>
                   </Box>
                 ))}
               </StyledExampleWrap>
               <StyledExampleWrap bg="bg-col-800">
                 {shadowsDarkBack.map((shadow) => (
-                  <Box className={shadow} key={shadow}>
+                  <Box className={`${shadow}`} key={shadow}>
                     <Text className="text-col-100 p-[1vh]">{shadow}</Text>
                   </Box>
                 ))}
