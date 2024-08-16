@@ -44,6 +44,7 @@ import CustomNavLink from "~/components/buildingBlocks/custonNavLink";
 import { HomeIcon } from "styles";
 import Transition from "~/components/buildingBlocks/transition";
 import NavIconButton from "~/components/buildingBlocks/navLinkIconButton";
+import IconButton from "~/components/buildingBlocks/iconButton";
 
 export function SectionHeading({
   id,
@@ -468,12 +469,12 @@ export default function Design() {
                 type="smallNegative"
                 iconRight={GoSmiley}
               />
-              <NavIconButton icon={GoSmiley} />{" "}
-              <NavIconButton type="smallNormal" icon={GoSmiley} />
-              <NavIconButton type="negative" icon={GoSmiley} />
-              <NavIconButton type="smallNegative" icon={GoSmiley} />
-              <NavIconButton type="unstyled" icon={GoSmiley} />
-              <NavIconButton type="smallUnstyled" icon={GoSmiley} />
+              <IconButton icon={GoSmiley} />{" "}
+              <IconButton type="smallNormal" icon={GoSmiley} />
+              <IconButton type="negative" icon={GoSmiley} />
+              <IconButton type="smallNegative" icon={GoSmiley} />
+              <IconButton type="unstyled" icon={GoSmiley} />
+              <IconButton type="smallUnstyled" icon={GoSmiley} />
             </StyledExampleWrap>
           </VStackFull>
           <VStackFull>

@@ -10,7 +10,7 @@ import HStack from "~/components/buildingBlocks/hStack";
 export default function AnimatedTextDemoRoute() {
   return (
     <TransitionFull className="relative">
-      <NavContainer bg="bg-col-990" className="h-[8vh]">
+      <NavContainer bg="bg-col-990">
         <HStack className="w-fit pl-[2vh] flex-shrink-0">
           <NavIconButton icon={HomeIcon} to="/" />
           <NavIconButton icon={ReturnPathIcon} to="/design/components" />

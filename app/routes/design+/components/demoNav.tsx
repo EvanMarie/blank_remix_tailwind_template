@@ -7,7 +7,7 @@ import NavIconButton from "~/components/buildingBlocks/navLinkIconButton";
 
 export default function DemoNav({ heading }: { heading: string }) {
   return (
-    <NavContainer bg="bg-col-990" className="h-[8vh]">
+    <NavContainer bg="bg-col-990">
       <HStack className="w-fit absolute top-[0.7vh] left-[1vh] flex-shrink-0">
         <NavIconButton icon={HomeIcon} to="/" />
         <NavIconButton icon={ReturnPathIcon} to="/design/components" />

@@ -51,7 +51,7 @@ export default function Test() {
 
   return (
     <TransitionFull className="relative">
-      <NavContainer bg="bg-col-990" className="h-[8vh]">
+      <NavContainer bg="bg-col-990">
         <HStack className="w-fit pl-[2vh] flex-shrink-0">
           <NavIconButton icon={HomeIcon} to="/" />
           <NavIconButton icon={ReturnPathIcon} to="/design/components" />

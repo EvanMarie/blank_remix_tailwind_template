@@ -662,7 +662,7 @@ export default {
       },
       fontFamily: {
         sans: ["Lato", "sans-serif"],
-        cursive: ["Waiting for the Sunrise", "cursive"],
+        cursive: ["Comic Neue", "cursive"],
       },
       fontSize: {
         xxs: ["1.2vh", { lineHeight: "1.8vh" }],

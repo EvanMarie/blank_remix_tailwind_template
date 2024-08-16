@@ -13,7 +13,7 @@ export default function ComponentsDemos() {
   return (
     <TransitionFull>
       <FlexFull className="overflow-y-auto px-[2vh]">
-        <NavContainer bg="bg-col-990" className="h-[8vh]">
+        <NavContainer bg="bg-col-990" className="h-5vh">
           <Flex className="w-[6vw] absolute top-[0.7vh] left-[1vh]">
             <NavIconButton icon={ReturnPathIcon} to="/design" />
           </Flex>
