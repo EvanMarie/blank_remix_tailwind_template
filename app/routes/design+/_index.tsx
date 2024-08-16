@@ -139,7 +139,7 @@ export default function Design() {
     <Transition className="w-full h-full justify-center overflow-y-auto">
       <FlexFull className="h-full overflow-y-auto justify-center">
         <FlexFull className="fixed top-0 left-0 p-[1vh] bg-col-200 z-10 shadowWideLooser rounded-none">
-          <Wrap className="w-full gap-x-[5vh] gap-y-[1vh] justify-around">
+          <Wrap className="w-full gap-x-[5vh] gap-y-0.5vh justify-around">
             <NavIconButton icon={HomeIcon} type="smallNormal" to="/" />
             <CustomNavLink to="#colorscheme" linkText="Colors" useHash />
             <CustomNavLink to="#rgb" linkText="RBG" useHash />
@@ -156,10 +156,7 @@ export default function Design() {
             <CustomNavLink to="/design/components" linkText="Components" />
           </Wrap>
         </FlexFull>
-        <VStackFull
-          className="h-fit px-[2vh] pt-[5.5vh] xl:pt-[3.5vh] pb-[2vh]"
-          gap="gap-[2vh]"
-        >
+        <VStackFull className="h-fit px-[2vh] py-1vh" gap="gap-[2vh]">
           <VStackFull gap="gap-[1vh]">
             <SectionHeading id="colorscheme" heading="Color Scheme" />
             <StyledExampleWrap bg="bg-white">
@@ -178,70 +175,7 @@ export default function Design() {
                 </TestBox>
               ))}
             </StyledExampleWrap>
-            <StyledExampleWrap>
-              {colors200.map((color: string, index: number) => (
-                <TestBox key={index} bg={color}>
-                  {" "}
-                  {color}
-                </TestBox>
-              ))}
-            </StyledExampleWrap>
-            <StyledExampleWrap>
-              {colors300.map((color: string, index: number) => (
-                <TestBox key={index} bg={color}>
-                  {" "}
-                  {color}
-                </TestBox>
-              ))}
-            </StyledExampleWrap>
-            <StyledExampleWrap>
-              {colors400.map((color: string, index: number) => (
-                <TestBox key={index} bg={color}>
-                  {" "}
-                  {color}
-                </TestBox>
-              ))}
-            </StyledExampleWrap>
-            <StyledExampleWrap>
-              {colors500.map((color: string, index: number) => (
-                <TestBox key={index} bg={color}>
-                  {" "}
-                  {color}
-                </TestBox>
-              ))}
-            </StyledExampleWrap>
-            <StyledExampleWrap>
-              {colors600.map((color: string, index: number) => (
-                <TestBox key={index} bg={color}>
-                  {" "}
-                  {color}
-                </TestBox>
-              ))}
-            </StyledExampleWrap>
-            <StyledExampleWrap bg="bg-col-500">
-              {colors700.map((color: string, index: number) => (
-                <TestBox key={index} bg={color}>
-                  {" "}
-                  {color}
-                </TestBox>
-              ))}
-            </StyledExampleWrap>
-            <StyledExampleWrap bg="bg-col-500">
-              {colors800.map((color: string, index: number) => (
-                <TestBox key={index} bg={color}>
-                  {" "}
-                  {color}
-                </TestBox>
-              ))}
-            </StyledExampleWrap>
-            <StyledExampleWrap bg="bg-col-500">
-              {colors900.map((color: string, index: number) => (
-                <TestBox key={index} bg={color}>
-                  {" "}
-                  {color}
-                </TestBox>
-              ))}
-            </StyledExampleWrap>
+
             <SectionHeading id="rgb" heading="RBG Equivalents" />
             <StyledExampleWrap bg="bg-white">
               {allColorsRGB.map(
@@ -484,7 +418,7 @@ export default function Design() {
               {transitions.map((transition) => (
                 <StyleExampleBox
                   key={transition}
-                  className={`${transition} bg-col-200 hover:bg-col-900
+                  className={`${transition} bg-col-200 hover:bg-col-900 text-col-900
               hover:text-col-100 shadowNarrowNormal`}
                   text={`className='${transition}'`}
                 />
