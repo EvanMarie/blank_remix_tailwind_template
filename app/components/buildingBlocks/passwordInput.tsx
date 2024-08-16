@@ -22,7 +22,7 @@ const Box = React.forwardRef<HTMLDivElement, BoxProps>(
       className = "",
       onMouseEnter,
       onMouseLeave,
-      tabIndex = 0,
+      tabIndex = -1,
     },
     ref
   ) => {

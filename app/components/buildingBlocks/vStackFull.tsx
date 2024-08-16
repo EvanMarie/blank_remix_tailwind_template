@@ -20,7 +20,7 @@ const VStackFull = React.forwardRef<HTMLDivElement, VStackFullProps>(
       onClick,
       style = {},
       align = "items-center",
-      tabIndex = 0,
+      tabIndex = -1,
     },
     ref
   ) => {

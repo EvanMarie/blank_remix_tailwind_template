@@ -55,16 +55,7 @@ export default function Index() {
           </Text>
           <VStackFull className="text-col-100 text-[2vh] sm:text-[2.5vh] md:text-[3vh] textShadow text-center">
             <Text className="text-col-100 animate-slideInLeft">
-              A Project Launchpad with Vite, Tailwind CSS,
-            </Text>
-            <Text className="text-col-100 animate-slideInRight ">
-              and Remix Flat Routes
-            </Text>
-            <Text className="animate-zoomIn ">
-              including extensive preset options
-            </Text>
-            <Text className="animate-zoomIn ">
-              and components with quick customization.
+              A Project Launchpad
             </Text>
           </VStackFull>
           <Wrap className="animate-slideInUp50vh gap-[3vh] duration-2200 justify-center">

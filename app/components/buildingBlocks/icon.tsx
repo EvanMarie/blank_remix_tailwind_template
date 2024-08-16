@@ -19,7 +19,7 @@ interface IconProps {
 
 export default function Icon({
   icon: IconComponent,
-  tabIndex = 0,
+  tabIndex = -1,
   containerClassName = "",
   iconClassName = "",
   // hoverCursor = "hover:cursor-default",

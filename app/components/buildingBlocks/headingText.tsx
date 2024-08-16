@@ -19,7 +19,7 @@ export default function Heading({
   className = "text-stroke-5-900",
   isCursive = true,
   color = "text-col-300",
-  tabIndex = 0,
+  tabIndex = -1,
 }: TextProps) {
   const style: React.CSSProperties = {};
 

@@ -10,7 +10,7 @@ interface FlexProps {
 }
 
 const Flex = React.forwardRef<HTMLDivElement, FlexProps>(
-  ({ children, style, onClick, className = "", id, tabIndex = 0 }, ref) => {
+  ({ children, style, onClick, className = "", id, tabIndex = -1 }, ref) => {
     return (
       <div
         ref={ref}

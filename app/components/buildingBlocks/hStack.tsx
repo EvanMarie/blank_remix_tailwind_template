@@ -28,7 +28,7 @@ const HStack = React.forwardRef<HTMLDivElement, HStackProps>(
       onMouseLeave,
       onFocus,
       onBlur,
-      tabIndex = 0,
+      tabIndex = -1,
     },
     ref
   ) => {

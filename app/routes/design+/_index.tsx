@@ -137,7 +137,7 @@ export default function Design() {
   return (
     <Transition className="w-full h-full justify-center overflow-y-auto">
       <FlexFull className="h-full overflow-y-auto justify-center">
-        <FlexFull className="fixed top-0 left-0 p-[1vh] bg-col-200 z-10 shadowWideLooser">
+        <FlexFull className="fixed top-0 left-0 p-[1vh] bg-col-200 z-10 shadowWideLooser rounded-none">
           <Wrap className="w-full gap-x-[5vh] gap-y-[1vh] justify-around">
             <NavIconButton icon={HomeIcon} type="smallNormal" to="/" />
             <CustomNavLink to="#colorscheme" linkText="Colors" useHash />

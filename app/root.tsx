@@ -36,7 +36,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <LayoutContainer className="bg-col-880">
+        <LayoutContainer className="bg-col-880 rounded-none">
           <Outlet />
           <ScrollRestoration />
           <Scripts />

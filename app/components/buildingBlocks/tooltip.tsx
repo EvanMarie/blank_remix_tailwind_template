@@ -36,7 +36,7 @@ export default function Tooltip({
   placement = "bottom",
   border = "border-970-md",
   className = "",
-  tabIndex = 0,
+  tabIndex = -1,
 }: TooltipProps) {
   const [isHovered, setHovered] = useState(false);
 
